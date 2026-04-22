@@ -20,7 +20,11 @@ def get_categories(request):
 
 def get_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
-    return render(request, 'main/category.html', {'category': category})
+    tumbs = Tumb.objects.filter(category=category)
+    return render(request, 'main/category.html', {
+        'category': category,
+        'tumbs': tumbs
+    })
 
 
 def about(request):

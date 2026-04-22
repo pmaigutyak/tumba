@@ -4,14 +4,14 @@
 {% block content %}
     <h1 class="title">{{ category.name }}</h1>
 
-    {#<div class="products">#}
-    {#    {% for tumb in tumbs %}#}
-    {#        <div class="product">#}
-    {#            <a href="{% url 'tumb_detail' tumb.id %}">#}
-    {#                <img src="{{ tumb.image.url }}" alt="{{ tumb.title }}">#}
-    {#                <p>{{ tumb.title }}</p>#}
-    {#            </a>#}
-    {#        </div>#}
-    {#    {% endfor %}#}
-    {#</div>#}
+    <div class="products">
+        {% for tumb in tumbs %}
+            <div class="product">
+                <a href="{% url 'tumb_detail' tumb.id %}">
+                    <img src="{{ tumb.image.url }}" alt="{{ tumb.title }}">
+                    <p>{{ tumb.title }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
