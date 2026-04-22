@@ -1,11 +1,16 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from catalog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('catalog.urls')),
+    path('', views.home, name='home'),
+    path('tumb/<int:id>/', views.tumb_detail, name='tumb_detail'),
+    path('categories/', views.get_categories, name='categories'),
+    path('categories/<int:category_id>/', views.get_category, name='category'),
+    path('about/', views.about)
 ]
 
 if settings.DEBUG:
