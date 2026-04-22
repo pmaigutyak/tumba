@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 class="title">ТУМБИ</h1>
+
+<div class="categories">
+    <div class="cat">ТУМБИ ДЛЯ ВЗУТТЯ</div>
+    <div class="cat">ТУМБИ ПІД ТЕЛЕВІЗОР</div>
+    <div class="cat">ПРИЛІЖКОВІ</div>
+    <div class="cat">ПРИСТАВНІ</div>
+</div>
+
+<div class="products">
+    {% for tumb in tumbs %}
+        <div class="product">
+            <a href="{% url 'tumb_detail' tumb.id %}">
+                <img src="{{ tumb.image.url }}">
+                <p>{{ tumb.title }}</p>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
