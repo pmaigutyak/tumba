@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from catalog.models import Tumb
+
+
+@admin.register(Tumb)
+class TumbAdmin(admin.ModelAdmin):
+    pass
