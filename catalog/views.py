@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from catalog.models import Tumb
+from catalog.models import Tumb, Category
 
 
 def home(request):
@@ -13,8 +13,9 @@ def tumb_detail(request, id):
     return render(request, 'main/tumb_detail.html', {'tumb': tumb})
 
 
-def blog(request):
-    return render(request, 'main/blog.html')
+def get_categories(request):
+    categories = Category.objects.all()
+    return render(request, 'main/categories.html', {'categories': categories})
 
 
 def about(request):

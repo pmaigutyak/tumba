@@ -4,10 +4,9 @@
 <h1 class="title">ТУМБИ</h1>
 
 <div class="categories">
-    <div class="cat">ТУМБИ ДЛЯ ВЗУТТЯ</div>
-    <div class="cat">ТУМБИ ПІД ТЕЛЕВІЗОР</div>
-    <div class="cat">ПРИЛІЖКОВІ</div>
-    <div class="cat">ПРИСТАВНІ</div>
+    {% for category in categories %}
+        <div class="cat">{{ category.name }}</div>
+    {% endfor %}
 </div>
 
 <div class="products">
