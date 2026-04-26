@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block content %}
+<form method="GET">
+    <input type="text" name="q" placeholder="Пошук тумби...">
+    <button type="submit">Знайти</button>
+</form>
 
 <h1 class="title">ТУМБИ</h1>
 
@@ -19,6 +23,7 @@
                 <img src="{{ tumb.image.url }}">
                 <p>{{ tumb.title }}</p>
             </a>
+              <a href="{% url 'add_favorite' tumb.id %}">❤️</a>
         </div>
     {% endfor %}
 </div>

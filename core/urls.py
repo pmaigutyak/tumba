@@ -10,7 +10,9 @@ urlpatterns = [
     path('tumb/<int:id>/', views.tumb_detail, name='tumb_detail'),
     path('categories/', views.get_categories, name='categories'),
     path('categories/<int:category_id>/', views.get_category, name='category'),
-    path('about/', views.about)
+    path('about/', views.about),
+    path('favorite/<int:id>/', views.add_favorite, name='add_favorite'),
+
 ]
 
 if settings.DEBUG:

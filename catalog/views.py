@@ -2,11 +2,26 @@ from django.shortcuts import render, get_object_or_404
 
 from catalog.models import Tumb, Category
 
+from django.shortcuts import redirect
 
 def home(request):
+    query = request.GET.get('q')
     tumbs = Tumb.objects.all()
+
+    if query:
+        tumbs = tumbs.filter(title__icontains=query)
+
     return render(request, 'main/home.html', {'tumbs': tumbs})
 
+def add_favorite(request, id):
+    favorites = request.session.get('favorites', [])
+
+    if id not in favorites:
+        favorites.append(id)
+
+    request.session['favorites'] = favorites
+
+    return redirect('home')
 
 def tumb_detail(request, id):
     tumb = get_object_or_404(Tumb, id=id)
