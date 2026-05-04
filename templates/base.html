@@ -16,6 +16,12 @@
         <a href="/categories/">Товари</a>
         <a href="/contacts/">Контакти</a>
         <a href="/about/">Про нас</a>
+        {% if user.is_authenticated %}
+        <a href="/accounts/logout/">Вийти</a>
+    {% else %}
+        <a href="/accounts/login/">Увійти</a>
+        <a href="/register/">Реєстрація</a>
+    {% endif %}
     </nav>
 </header>
 

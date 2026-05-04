@@ -1,8 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404 , redirect
 
 from catalog.models import Tumb, Category
 
 from django.shortcuts import redirect
+
+from django.contrib.auth.forms import UserCreationForm
+
 
 def home(request):
     query = request.GET.get('q')
@@ -44,3 +47,14 @@ def get_category(request, category_id):
 
 def about(request):
     return render(request, 'main/about.html')
+
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+
+    return render(request, 'main/register.html', {'form': form})
